@@ -17,8 +17,35 @@ status-website:
   logoUrl: https://idllyc.mmorpg.ovh/static/favicon.png
   favicon: https://idllyc.mmorpg.ovh/static/favicon.png
   name: Idllyc MMO
-  introTitle: "État des services d'Idllyc MMO"
+  introTitle: "État des services"
   introMessage: "Vérifié toutes les 5 minutes depuis GitHub, hors de nos serveurs. Un incident ouvert ici est suivi jusqu'à sa résolution."
+  theme: dark
+  # the game's palette (game/static/css/game.css): dark panels, one green, sober cards
+  customHeadHtml: |
+    <style>
+          html:root {
+            --body-background-color: #0d1117; --body-text-color: #e6edf3;
+            --card-background-color: #161b22; --card-border-color: #30363d;
+            --nav-background-color: #161b22; --nav-border-bottom-color: #30363d;
+            --nav-current-border-bottom-color: #22c55e;
+            --up-border-left-color: #22c55e; --down-border-left-color: #f85149;
+            --degraded-border-left-color: #f59e0b; --down-background-color: rgba(248, 81, 73, 0.12);
+            --tag-color: #0d1117; --tag-up-background-color: #22c55e;
+            --tag-down-background-color: #f85149; --tag-degraded-background-color: #f59e0b;
+            --change-background-color: #f0b429;
+            --error-button-border-color: rgba(34, 197, 94, 0.3); --error-button-background-color: rgba(34, 197, 94, 0.15);
+            --error-button-color: #4ade80;
+            --submit-button-border-color: rgba(34, 197, 94, 0.3); --submit-button-background-color: rgba(34, 197, 94, 0.15);
+            --submit-button-color: #4ade80;
+            --graph-opacity: 0.45; --graph-filter: hue-rotate(-35deg) saturate(0.8);
+          }
+          body { font-family: 'Segoe UI', Arial, sans-serif; }
+          h1 { color: #22c55e; font-weight: 600; font-size: 1.75em; }
+          h2 { font-size: 1.15em; font-weight: 600; }
+          article { border-radius: 8px; }
+          main p, main h3 { color: #a2a9b1; }
+          footer, footer a { color: #8b949e; }
+        </style>
   navbar:
     - title: État
       href: /
@@ -26,62 +53,64 @@ status-website:
       href: https://idllyc.mmorpg.ovh/
 
 i18n:
-  activeIncidents: Incidents en cours
-  allSystemsOperational: Tous les services fonctionnent
-  incidentReport: "Incident #$NUMBER : $TITLE"
-  pastIncidents: Incidents passés
-  pastIncidentsResolved: "Résolu en $MINUTES min, $POSTS messages"
-  liveStatus: En direct
-  systemStatus: État des services
-  up: Fonctionne
-  down: En panne
-  degraded: Ralenti
-  ms: ms
-  loading: Chargement
-  navGitHub: GitHub
-  footer: "Page générée par Upptime"
-  rateLimitExceededTitle: Limite atteinte
-  rateLimitExceededIntro: "GitHub limite les appels depuis votre adresse. Réessayez dans un moment."
-  error: Erreur
-  errorTitle: Une erreur s'est produite
-  errorIntro: "La page n'a pas pu charger l'état des services."
-  errorText: "Réessayez dans un moment."
-  errorHome: Retour à l'accueil
-  pastScheduledMaintenance: Maintenances passées
-  scheduledMaintenance: Maintenance prévue
-  scheduledMaintenanceSummaryStarted: "Commencée le $DATE, durée $DURATION min"
-  scheduledMaintenanceSummaryStarts: "Commence le $DATE, durée $DURATION min"
-  startedAt: Commencé le
-  startsAt: Commence le
-  duration: Durée
-  durationMin: "$DURATION min"
-  incidentTitle: Détail de l'incident
-  incidentDetails: Détails
-  incidentFixed: Résolu
-  incidentOngoing: En cours
-  incidentOpenedAt: Ouvert le
-  incidentClosedAt: Résolu le
-  incidentSubscribe: Suivre
-  incidentViewOnGitHub: Voir sur GitHub
+  activeIncidents: "Incidents en cours"
+  allSystemsOperational: "Tous les services fonctionnent"
+  incidentReport: "Incident n° $NUMBER →"
+  activeIncidentSummary: "Ouvert le $DATE, $POSTS messages"
+  incidentTitle: "Détail de l'incident n° $NUMBER"
+  incidentDetails: "Détail de l'incident"
+  incidentFixed: "Résolu"
+  incidentOngoing: "En cours"
+  incidentOpenedAt: "Ouvert le"
+  incidentClosedAt: "Résolu le"
+  incidentViewOnGitHub: "Voir et suivre sur GitHub"
   incidentCommentSummary: "Publié le $DATE par $AUTHOR"
-  incidentBack: Retour
-  pastIncidentsDuration: Durée
-  duration24H: 24 h
-  duration7D: 7 jours
-  duration30D: 30 jours
-  duration1Y: 1 an
-  durationAll: Tout
-  uptime: Disponibilité
-  responseTime: Temps de réponse
-  averageResponseTime: Temps de réponse moyen
-  responseTimeDay: "Temps de réponse (24 h)"
-  responseTimeWeek: "Temps de réponse (7 jours)"
-  responseTimeMonth: "Temps de réponse (30 jours)"
-  responseTimeYear: "Temps de réponse (1 an)"
-  responseTimeGraphAlt: Graphique du temps de réponse
-  overallUptime: "Disponibilité globale : $UPTIME"
-  overallUptimeTitle: Disponibilité globale
-  averageResponseTimeTitle: Temps de réponse moyen
-  averageResponseTimeDescription: "Temps de réponse moyen : $TIME ms"
+  incidentBack: "← Tous les incidents"
+  pastIncidents: "Incidents passés"
+  pastIncidentsResolved: "Résolu en $MINUTES min, $POSTS messages"
+  liveStatus: "En direct"
+  overallUptime: "Disponibilité : $UPTIME"
+  overallUptimeTitle: "Disponibilité"
+  averageResponseTime: "Temps de réponse moyen : $TIME ms"
+  averageResponseTimeTitle: "Temps de réponse moyen"
   sevelDayResponseTime: "Temps de réponse sur 7 jours"
-  responseTimeChartTitle: Temps de réponse
+  responseTimeMs: "Temps de réponse (ms)"
+  up: "En ligne"
+  down: "En panne"
+  degraded: "Ralenti"
+  ms: "ms"
+  loading: "Chargement"
+  navGitHub: "GitHub"
+  footer: "Vérifié par [Upptime](https://upptime.js.org), historique sur [GitHub]($REPO)"
+  rateLimitExceededTitle: "Trop de requêtes"
+  rateLimitExceededIntro: "GitHub limite le nombre de requêtes par heure depuis votre adresse. Réessayez dans un moment."
+  rateLimitExceededWhatDoesErrorMean: "Qu'est-ce que ça veut dire ?"
+  rateLimitExceededErrorMeaning: "Cette page lit l'état des services sur GitHub, qui autorise 60 requêtes par heure et par adresse."
+  rateLimitExceededErrorHowCanFix: "Comment faire ?"
+  rateLimitExceededErrorFix: "Attendez une heure, ou ajoutez un jeton d'accès GitHub personnel (5 000 requêtes par heure)."
+  rateLimitExceededGeneratePAT: "Créer un jeton d'accès personnel"
+  rateLimitExceededHasSet: "Un jeton d'accès personnel est enregistré."
+  rateLimitExceededRemoveToken: "Retirer le jeton"
+  rateLimitExceededGitHubPAT: "Jeton d'accès GitHub"
+  rateLimitExceededCopyPastePAT: "Collez votre jeton"
+  rateLimitExceededSaveToken: "Enregistrer le jeton"
+  errorTitle: "Une erreur s'est produite"
+  errorIntro: "L'état des services n'a pas pu être chargé."
+  errorText: "Réessayez dans un moment."
+  errorHome: "Retour à l'accueil"
+  pastScheduledMaintenance: "Maintenances passées"
+  scheduledMaintenance: "Maintenance prévue"
+  scheduledMaintenanceSummaryStarted: "Commencée le $DATE, pour $DURATION min"
+  scheduledMaintenanceSummaryStarts: "Commence le $DATE, pour $DURATION min"
+  startedAt: "Commencée le"
+  startsAt: "Commence le"
+  duration: "Durée"
+  durationMin: "$DURATION min"
+  incidentCompleted: "Terminée"
+  incidentScheduled: "Prévue"
+  duration24H: "24 h"
+  duration7D: "7 jours"
+  duration30D: "30 jours"
+  duration1Y: "1 an"
+  durationAll: "Tout"
+  locale: "fr-FR"
