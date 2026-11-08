@@ -37,14 +37,20 @@ status-website:
             --error-button-color: #4ade80;
             --submit-button-border-color: rgba(34, 197, 94, 0.3); --submit-button-background-color: rgba(34, 197, 94, 0.15);
             --submit-button-color: #4ade80;
-            --graph-opacity: 0.45; --graph-filter: hue-rotate(-35deg) saturate(0.8);
-          }
+              }
           body { font-family: 'Segoe UI', Arial, sans-serif; }
           h1 { color: #22c55e; font-weight: 600; font-size: 1.75em; }
           h2 { font-size: 1.15em; font-weight: 600; }
           article { border-radius: 8px; }
           main p, main h3 { color: #a2a9b1; }
           footer, footer a { color: #8b949e; }
+      /* the response time graph is the card's background image: drawn again in a layer that
+         can take a filter, the game's green, faint behind the text */
+      html body main article.graph { background-image: none !important; }
+      html body main article.graph::before { content: ''; position: absolute; inset: 0; z-index: 0;
+        background: var(--background) center right / contain no-repeat; border-radius: inherit;
+        filter: hue-rotate(-26deg) saturate(0.8); opacity: 0.3; pointer-events: none; }
+      html body main article.graph > * { position: relative; z-index: 1; }
         </style>
   navbar:
     - title: État
