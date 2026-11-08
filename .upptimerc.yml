@@ -18,7 +18,7 @@ status-website:
   favicon: https://idllyc.mmorpg.ovh/static/favicon.png
   name: Idllyc MMO
   introTitle: "État des services"
-  introMessage: "Vérifié toutes les 5 minutes depuis GitHub, hors de nos serveurs. Un incident ouvert ici est suivi jusqu'à sa résolution."
+  introMessage: "Jeu, temps réel et connexion, testés toutes les 5 minutes."
   theme: dark
   # the game's palette (game/static/css/game.css): dark panels, one green, sober cards
   customHeadHtml: |
