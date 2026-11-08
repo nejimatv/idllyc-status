@@ -1,31 +1,87 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+owner: nejimatv
+repo: idllyc-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  # the health route checks the database and the cache; it answers 200 with
+  # another status when one is down, so the body decides
+  - name: Jeu
+    url: https://idllyc.mmorpg.ovh/health/
+    __dangerous__body_down_if_text_missing: '"status": "healthy"'
+  - name: Temps réel (chat, notifications)
+    url: https://idllyc.mmorpg.ovh/socket.io/?EIO=4&transport=polling
+  - name: Connexion
+    url: https://idllyc.mmorpg.ovh/login/
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  baseUrl: /idllyc-status
+  logoUrl: https://idllyc.mmorpg.ovh/static/favicon.png
+  favicon: https://idllyc.mmorpg.ovh/static/favicon.png
+  name: Idllyc MMO
+  introTitle: "État des services d'Idllyc MMO"
+  introMessage: "Vérifié toutes les 5 minutes depuis GitHub, hors de nos serveurs. Un incident ouvert ici est suivi jusqu'à sa résolution."
   navbar:
-    - title: Status
+    - title: État
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: Jouer
+      href: https://idllyc.mmorpg.ovh/
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+i18n:
+  activeIncidents: Incidents en cours
+  allSystemsOperational: Tous les services fonctionnent
+  incidentReport: "Incident #$NUMBER : $TITLE"
+  pastIncidents: Incidents passés
+  pastIncidentsResolved: "Résolu en $MINUTES min, $POSTS messages"
+  liveStatus: En direct
+  systemStatus: État des services
+  up: Fonctionne
+  down: En panne
+  degraded: Ralenti
+  ms: ms
+  loading: Chargement
+  navGitHub: GitHub
+  footer: "Page générée par Upptime"
+  rateLimitExceededTitle: Limite atteinte
+  rateLimitExceededIntro: "GitHub limite les appels depuis votre adresse. Réessayez dans un moment."
+  error: Erreur
+  errorTitle: Une erreur s'est produite
+  errorIntro: "La page n'a pas pu charger l'état des services."
+  errorText: "Réessayez dans un moment."
+  errorHome: Retour à l'accueil
+  pastScheduledMaintenance: Maintenances passées
+  scheduledMaintenance: Maintenance prévue
+  scheduledMaintenanceSummaryStarted: "Commencée le $DATE, durée $DURATION min"
+  scheduledMaintenanceSummaryStarts: "Commence le $DATE, durée $DURATION min"
+  startedAt: Commencé le
+  startsAt: Commence le
+  duration: Durée
+  durationMin: "$DURATION min"
+  incidentTitle: Détail de l'incident
+  incidentDetails: Détails
+  incidentFixed: Résolu
+  incidentOngoing: En cours
+  incidentOpenedAt: Ouvert le
+  incidentClosedAt: Résolu le
+  incidentSubscribe: Suivre
+  incidentViewOnGitHub: Voir sur GitHub
+  incidentCommentSummary: "Publié le $DATE par $AUTHOR"
+  incidentBack: Retour
+  pastIncidentsDuration: Durée
+  duration24H: 24 h
+  duration7D: 7 jours
+  duration30D: 30 jours
+  duration1Y: 1 an
+  durationAll: Tout
+  uptime: Disponibilité
+  responseTime: Temps de réponse
+  averageResponseTime: Temps de réponse moyen
+  responseTimeDay: "Temps de réponse (24 h)"
+  responseTimeWeek: "Temps de réponse (7 jours)"
+  responseTimeMonth: "Temps de réponse (30 jours)"
+  responseTimeYear: "Temps de réponse (1 an)"
+  responseTimeGraphAlt: Graphique du temps de réponse
+  overallUptime: "Disponibilité globale : $UPTIME"
+  overallUptimeTitle: Disponibilité globale
+  averageResponseTimeTitle: Temps de réponse moyen
+  averageResponseTimeDescription: "Temps de réponse moyen : $TIME ms"
+  sevelDayResponseTime: "Temps de réponse sur 7 jours"
+  responseTimeChartTitle: Temps de réponse
